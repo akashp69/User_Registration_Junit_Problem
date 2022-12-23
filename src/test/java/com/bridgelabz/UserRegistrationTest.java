@@ -38,13 +38,13 @@ public class UserRegistrationTest {
     @Test
     public void Email_IsValid_FailTest() {
         result = UserRegistrationMain.isValidEmail("akashpakhare499gmail.co.in");
-        Assert.assertEquals("Sad",result);
+        Assert.assertEquals("Sad", result);
     }
 
     @Test
     public void phoneNumber_isValidMobileNo() {
         result = UserRegistrationMain.isValidPhoneNo("91 9423438559");
-        Assert.assertEquals("Happy",result);
+        Assert.assertEquals("Happy", result);
     }
 
     @Test
