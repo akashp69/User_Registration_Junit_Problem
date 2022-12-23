@@ -112,7 +112,7 @@ public class UserRegistrationMain {
 
     /**
      * This is Main Method is used for printing boolean value for whether pattern matches with given information
-     * If pattern matches with given regex then return happy if not matches then return sad
+     * If pattern matches with given regex then return happy  not matches then return sad
      **/
     public static void main(String[] args) {
         System.out.println(isValidFirstName("Akash"));
