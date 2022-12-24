@@ -14,7 +14,7 @@ public class UserRegistrationTest {
     }
     @Test
     public void firstName_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidFirstName("Akash123a");
+        result = UserRegistrationMain.isValidFirstName("Akash123");
         Assert.assertEquals("Sad",result);
     }
 
@@ -25,20 +25,20 @@ public class UserRegistrationTest {
     }
     @Test
     public void lastName_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidLastName("Pakhare");
+        result = UserRegistrationMain.isValidLastName("Pakhare1");
         Assert.assertEquals("Sad",result);
     }
 
     @Test
     public void Email_IsValid_PassTest() {
-        result = UserRegistrationMain.isValidEmail("akashpakhare499@gmail.co.in");
+        result = UserRegistrationMain.isValidEmail("akashpakhare499@gmail.com");
         Assert.assertEquals("Happy",result);
     }
 
     @Test
     public void Email_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidEmail("akashpakhare499gmail.co.in");
-        Assert.assertEquals("Sad", result);
+        result = UserRegistrationMain.isValidEmail("akashpakharegmail.co.in");
+        Assert.assertEquals("sad", result);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class UserRegistrationTest {
 
     @Test
     public void phoneNumber_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidPhoneNo("89 9423438559");
+        result = UserRegistrationMain.isValidPhoneNo("823438559");
         Assert.assertEquals("Sad",result);
     }
 
@@ -60,7 +60,7 @@ public class UserRegistrationTest {
     }
     @Test
     public void password_IsValid_FailTest1() {
-        result = UserRegistrationMain.isValidPassword1("Akash121");
+        result = UserRegistrationMain.isValidPassword1("Akash");
         Assert.assertEquals("Sad",result);
     }
 
@@ -86,7 +86,7 @@ public class UserRegistrationTest {
     }
     @Test
     public void password_IsValid_PassTest4() {
-        result = UserRegistrationMain.isValidPassword4("Akash@123");
+        result = UserRegistrationMain.isValidPassword4("Akashp$1");
         Assert.assertEquals("Happy", result);
     }
     @Test

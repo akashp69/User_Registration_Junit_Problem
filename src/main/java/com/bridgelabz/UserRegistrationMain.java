@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserRegistrationMain {
     public static String isValidFirstName(String firstName) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z]{2,}$");
     /**
      * Using Regex for to check valid username and compile the regex
 	 *	Pattern class contains matcher() method to find matching between given username
@@ -24,7 +24,7 @@ public class UserRegistrationMain {
      *	Pattern class contains matcher() method to find matching between given lastname
      */
     public static String isValidLastName(String lastName) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-Z]{2,}$");
         /**
          * Return happy if the Lastname matched the Regex pattern
          * If Lastname not matched the  Regex then  return sad
@@ -56,6 +56,7 @@ public class UserRegistrationMain {
 
     public static String isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
+
         /**
          * Return happy if the Email id  matched the Regex pattern
          * If Email id not matched the  Regex then  return sad
@@ -63,7 +64,7 @@ public class UserRegistrationMain {
         if(pattern.matcher(email).matches()){
             return "Happy";
         }else
-            return "Sad";
+            return "sad";
     }
     /**
      * Using Regex pattern  for to check valid Password and compile the regex
@@ -101,13 +102,13 @@ public class UserRegistrationMain {
         }else
             return "Sad";
     }
-    public static String isEmailValidation(String email) {
+    public static boolean isEmailValidation(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
-        if(pattern.matcher(email).matches()){
-            return "Happy";
-        }else
-            return "Sad";
+        return pattern.matcher(email).matches();
     }
+
+
+
 
 
     /**
@@ -123,7 +124,8 @@ public class UserRegistrationMain {
         System.out.println(isValidPassword2("Akash121"));
         System.out.println(isValidPassword3("Akashpakhare1"));
         System.out.println(isValidPassword4("Akashp$1"));
-        System.out.println(isEmailValidation("akashpakhare123@yahoo.co.in"));
+
+
     }
 }
 
