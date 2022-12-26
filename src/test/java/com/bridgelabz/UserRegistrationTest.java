@@ -6,92 +6,111 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class UserRegistrationTest {
-    String result;
+    Boolean result;
     @Test
-    public void firstName_IsValid_PassTest() {
+    public void givenFirstName_WhenProper_ShouldReturnTrue() {
         result = UserRegistrationMain.isValidFirstName("Akash");
-        Assert.assertEquals("Happy", result);
+
     }
     @Test
-    public void firstName_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidFirstName("Akash123");
-        Assert.assertEquals("Sad",result);
+    public void givenFirstName_WhenImProper_ShouldReturnTrue() {
+        try {
+            UserRegistrationMain.isValidFirstName("akash1.23j");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_FIRST_NAME, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void lastName_IsValid_PassTest() {
-        result = String.valueOf(UserRegistrationMain.isValidLastName("Pakhare"));
-        Assert.assertEquals("Happy",result);
+    public void givenLastName_WhenProper_ShouldReturnTrue() {
+        result = UserRegistrationMain.isValidLastName("Pakhare");
+        Assert.assertEquals(true,result);
     }
     @Test
-    public void lastName_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidLastName("Pakhare1");
-        Assert.assertEquals("Sad",result);
-    }
-
-    @Test
-    public void Email_IsValid_PassTest() {
-        result = UserRegistrationMain.isValidEmail("akashpakhare499@gmail.com");
-        Assert.assertEquals("Happy",result);
+    public void givenLastName_WhenImProper_ShouldReturnInvalidMessage() {
+        try {
+            UserRegistrationMain.isValidLastName("Pakhare.1");
+        }catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_LAST_NAME, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void Email_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidEmail("akashpakharegmail.co.in");
-        Assert.assertEquals("sad", result);
+    public void givenProperEmailShouldReturnTrue() {
+        result = UserRegistrationMain.isValidEmail("akashpakhare499@gmail.co.in");
+        Assert.assertEquals(true,result);
     }
 
     @Test
-    public void phoneNumber_isValidMobileNo() {
+    public void  givenImProperEmailShouldReturnInvalidMessage() {
+        try {
+            UserRegistrationMain.isValidEmail("akashpakhare8.gmail.co.in1");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_EMAIL, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenProperPhoneNumberShouldReturnTure() {
         result = UserRegistrationMain.isValidPhoneNo("91 9423438559");
-        Assert.assertEquals("Happy", result);
+        Assert.assertEquals(true,result);
     }
 
     @Test
-    public void phoneNumber_IsValid_FailTest() {
-        result = UserRegistrationMain.isValidPhoneNo("823438559");
-        Assert.assertEquals("Sad",result);
+    public void givenimProperPhoneNumberShouldReturnInvalidMessage() {
+        try {
+            UserRegistrationMain.isValidPhoneNo("89 55655668");
+        }catch (UserRegistrationException e){
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_PHONE_NUMBER, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
-    public void password_IsValid_PassTest1() {
+    public void givenProperPassword1ShouldReturnTrue() {
         result = UserRegistrationMain.isValidPassword1("akashpakhare");
-        Assert.assertEquals("Happy",result);
+        Assert.assertEquals(true,result);
     }
     @Test
-    public void password_IsValid_FailTest1() {
-        result = UserRegistrationMain.isValidPassword1("Akash");
-        Assert.assertEquals("Sad",result);
+    public void givenImProperPassword1ShouldReturnInvalidMessage() {
+        try {
+            UserRegistrationMain.isValidPassword1("Ap121");
+        }catch (UserRegistrationException e){
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_PASSWORD, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
     public void password_IsValid_PassTest2() {
         result = UserRegistrationMain.isValidPassword2("Akashpakhare");
-        Assert.assertEquals("Happy", result);
+
     }
     @Test
     public void password_IsValid_FailTest2() {
-        result = UserRegistrationMain.isValidPassword2("akashpakhare1");
-        Assert.assertEquals("Sad", result);
+        try {
+            UserRegistrationMain.isValidPassword2("akashpakhare1");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_PASSWORD, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
     @Test
     public void password_IsValid_PassTest3() {
         result = UserRegistrationMain.isValidPassword3("Akashpakhare1");
-        Assert.assertEquals("Happy", result);
+
     }
     @Test
     public void password_IsValid_FailTest3() {
-        result = UserRegistrationMain.isValidPassword3("Akashpakhare");
-        Assert.assertEquals("Sad", result);
+        try {
+            UserRegistrationMain.isValidPassword3("Akashpakhare");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.INVALID_PASSWORD, e.exceptionType);
+            System.out.println(e.getMessage());
+        }
     }
-    @Test
-    public void password_IsValid_PassTest4() {
-        result = UserRegistrationMain.isValidPassword4("Akashp$1");
-        Assert.assertEquals("Happy", result);
+
     }
-    @Test
-    public void password_IsValid_FailTest4() {
-        result = UserRegistrationMain.isValidPassword4("Akash1234");
-        Assert.assertEquals("Sad", result);
-    }
-}
