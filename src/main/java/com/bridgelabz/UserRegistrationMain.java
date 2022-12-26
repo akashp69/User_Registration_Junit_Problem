@@ -1,120 +1,72 @@
 package com.bridgelabz;
 
 import java.util.regex.Pattern;
+/**
+ * created a class for Regex to check valid username and compile the regex
+ *Pattern class contains matcher() method to find matching between given username and regular expression.
+ */
 
 public class UserRegistrationMain {
-    public static String isValidFirstName(String firstName) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z]{2,}$");
-    /**
-     * Using Regex for to check valid username and compile the regex
-	 *	Pattern class contains matcher() method to find matching between given username
-     */
+    public static boolean isValidFirstName(String firstName) {
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
+
         if(pattern.matcher(firstName).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
-        /**
-         * Return happy if the firstname matched the Regex
-         * If firstname not matched the Regex then return sad
-         */
+            throw new UserRegistrationException("Invalid First Name ", UserRegistrationException.ExceptionType.INVALID_FIRST_NAME);
 
     }
-    /**
-     * Using Regex pattern  for to check valid Lastname and compile the regex
-     *	Pattern class contains matcher() method to find matching between given lastname
-     */
-    public static String isValidLastName(String lastName) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-Z]{2,}$");
-        /**
-         * Return happy if the Lastname matched the Regex pattern
-         * If Lastname not matched the  Regex then  return sad
-         */
+    public static boolean isValidLastName(String lastName) {
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
         if(pattern.matcher(lastName).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Last Name ", UserRegistrationException.ExceptionType.INVALID_LAST_NAME);
     }
-    /**
-     * Using Regex pattern  for to check valid Phone Number and compile the regex
-     *	Pattern class contains matcher() method to find matching between given Phone Number
-     */
-    public static String isValidPhoneNo(String phoneNo) {
+    public static boolean isValidPhoneNo(String phoneNo) {
         Pattern pattern = Pattern.compile("^[0-9]{1,2} \\d{10}$");
-        /**
-         * Return happy if the Phone Number matched the Regex pattern
-         * If Phone Number not matched the  Regex then  return sad
-         */
         if(pattern.matcher(phoneNo).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Phone number ", UserRegistrationException.ExceptionType.INVALID_PHONE_NUMBER);
     }
-    /**
-     * Using Regex pattern  for to check valid Email Id and compile the regex
-     *	Pattern class contains matcher() method to find matching between given Email Id
-     */
-
-    public static String isValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
-
-        /**
-         * Return happy if the Email id  matched the Regex pattern
-         * If Email id not matched the  Regex then  return sad
-         */
         if(pattern.matcher(email).matches()){
-            return "Happy";
+            return true;
         }else
-            return "sad";
+            throw new UserRegistrationException("Invalid Email address ", UserRegistrationException.ExceptionType.INVALID_EMAIL);
     }
-    /**
-     * Using Regex pattern  for to check valid Password and compile the regex
-     *	Pattern class contains matcher() method to find matching between given Password
-     */
-    public static String  isValidPassword1(String password1) {
+    public static boolean  isValidPassword1(String password1) {
         Pattern pattern = Pattern.compile("^[a-zA-z0-9]{8,}$");
-        /**
-         * Return happy if the Password  matched the Regex pattern
-         * If Password not matched the  Regex then  return sad
-         */
         if(pattern.matcher(password1).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password1 ", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword2(String password2) {
+    public static boolean isValidPassword2(String password2) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{7,}$");
         if(pattern.matcher(password2).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password2 ", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword3(String password3) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z1-9]{6,}[1-9]$");
+    public static boolean isValidPassword3(String password3) {
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z1-9]{6,}[1-9]+$");
         if(pattern.matcher(password3).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password3", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword4(String password4) {
-        Pattern pattern = Pattern.compile("^[A-Z][a-zA-z1-9]{5,}[@$^][1-9]$");
-        if(pattern.matcher(password4).matches()){
-            return "Happy";
-        }else
-            return "Sad";
-    }
+
     public static boolean isEmailValidation(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
         return pattern.matcher(email).matches();
     }
-
-
-
-
-
     /**
-     * This is Main Method is used for printing boolean value for whether pattern matches with given information
-     * If pattern matches with given regex then return happy  not matches then return sad
-     **/
+     * create a main method , for  execute all program in main method
+     * @param args no arguments
+     */
     public static void main(String[] args) {
         System.out.println(isValidFirstName("Akash"));
         System.out.println(isValidLastName("Pakhare"));
@@ -123,9 +75,7 @@ public class UserRegistrationMain {
         System.out.println(isValidPassword1("akash121"));
         System.out.println(isValidPassword2("Akash121"));
         System.out.println(isValidPassword3("Akashpakhare1"));
-        System.out.println(isValidPassword4("Akashp$1"));
-
-
+        System.out.println(isEmailValidation("akashpakhare123@yahoo.co.in"));
     }
 }
 
